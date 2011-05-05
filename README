@@ -1,0 +1,1 @@
+An attempt to port the 2010 UK Election data as displayed on http://ukelection.byethost32.com/ from PHP to a Django project, while adding additional data from the 2011 local elections and AV referendum.
