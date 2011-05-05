@@ -1,1 +1,15 @@
+# http://stackoverflow.com/questions/3719243/recommended-gitignore-file-for-python-projects
+
 *.sql
+*.db
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+*.pyc
+*.pyo
+*~
+*local_settings.py
