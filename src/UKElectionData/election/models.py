@@ -1,13 +1,18 @@
 from django.db import models
 
 # Create your models here.
+# a candidate fighting the 2010 election
 class Candidate_2010(models.Model):
     can_id = models.IntegerField()
     can_name = models.CharField(max_length=255)
     can_party = models.IntegerField()
     can_votes_2010 = models.IntegerField()
     can_constituency_2010 = models.IntegerField()
+    
+    def __unicode__(self):
+        return self.can_name
 
+# a constituency
 class Constituency(models.Model):
     con_id = models.IntegerField()
     con_name = models.CharField(max_length=255)
@@ -20,6 +25,10 @@ class Constituency(models.Model):
     con_winning_party_2010 = models.IntegerField()
     con_majority_2010 = models.IntegerField()
     
+    def __unicode__(self):
+        return self.con_name
+    
+# a party
 class Party(models.Model):
     party_id = models.IntegerField()
     party_name = models.CharField(max_length=255)
@@ -27,3 +36,6 @@ class Party(models.Model):
     party_votes_fought_2010 = models.IntegerField()
     party_candidates_2010 = models.IntegerField()
     party_seats_2010 = models.IntegerField()
+    
+    def __unicode__(self):
+        return self.party_name
