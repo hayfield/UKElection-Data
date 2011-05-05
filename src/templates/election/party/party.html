@@ -1,1 +1,6 @@
-{{ party }}
+<h1>{{ party.party_name }}</h1>
+<ul>
+{% for candidate in party.candidate_2010_set.all %}
+    <li>{{ candidate.can_name }}</li>
+{% endfor %}
+</ul>

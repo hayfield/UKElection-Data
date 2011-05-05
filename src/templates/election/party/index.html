@@ -1,7 +1,7 @@
 {% if parties %}
     <ul>
     {% for party in parties %}
-        <li><a href="/party/{{ party.id }}/">{{ party.party_name }}</a></li>
+        <li><a href="/party/{{ party.party_id }}/">{{ party.party_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
