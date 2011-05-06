@@ -21,8 +21,8 @@
     <tbody>
     {% for constituency in constituencies %}
         <tr>
-            <td><a href="/constituency/{{ constituency.id }}/">{{ constituency.name }}</a></td>
-            <td><a href="/party/{{ constituency.winning_party_2010.id }}">{{ constituency.winning_party_2010.name }}</td>
+            <td><a href="{% url constituency-2010-detail constituency.id %}">{{ constituency.name }}</a></td>
+            <td><a href="{% url party-detail constituency.winning_party_2010.id %}">{{ constituency.winning_party_2010.name }}</td>
             <td>{{ constituency.votes_2010 }}</td>
             <td>{{ constituency.winning_votes_2010 }}</td>
             <td>{{ constituency.winning_percentage_2010|floatformat:2 }}%</td>

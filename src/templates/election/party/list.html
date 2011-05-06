@@ -20,7 +20,7 @@
     <tbody>
         {% for party in parties %}
             <tr>
-                <td><a href="/party/{{ party.id }}/">{{ party.name }}</a></td>
+                <td><a href="{% url party-detail party.id %}">{{ party.name }}</a></td>
                 <td>{{ party.candidate_2010_set.count }}</td>
                 <td>{{ party.votes_2010 }}</td>
                 <td>{{ party.votes_fought_2010 }}</td>
