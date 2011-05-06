@@ -1,11 +1,11 @@
-{% extends "election/base.html" %}
+{% extends "election/base_list.html" %}
 
 {% block heading %}Party Listing{% endblock %}
 
-{% block content %}
+{% block table %}
 
 <table id="partyTable" class="dataTable classyTable">
-	<thead>
+    <thead>
         <tr>
             <th class="sorting">Party</th>
             <th class="sorting">Candidates</th>
@@ -43,4 +43,24 @@
     *both are rough guesstimates and may be wildly off
 </p>
 
-{% endblock content %}
+{% endblock table %}
+
+{% block datatablesInitSpecific %}
+    $("#partyTable").dataTable({
+        "sPaginationType": "full_numbers",
+        iDisplayLength : 30,
+        bLengthChange : false,
+        "aoColumns": [
+            { "sType": "html" },
+            { "sType": "numeric" },
+            { "sType": "numeric" },
+            { "sType": "numeric" },
+            { "sType": "percent" },
+            { "sType": "numeric" },
+            { "sType": "numeric" },
+            { "sType": "numeric" }
+        ],
+        bAutoWidth: false,
+        "aaSorting": [[7, "desc"], [6, "desc"], [5, "desc"], [4, "desc"]]
+    });
+{% endblock datatablesInitSpecific %}

@@ -1,11 +1,11 @@
-{% extends "election/base.html" %}
+{% extends "election/base_list.html" %}
 
 {% block heading %}Constituency Listing{% endblock %}
 
-{% block content %}
+{% block table %}
 
 <table id="constituencyTable" class="dataTable classyTable">
-	<thead>
+    <thead>
         <tr>
             <th class="sorting">Constituency</th>
             <th class="sorting">Winning Party</th>
@@ -37,4 +37,24 @@
     </tbody>
 </table>
 
-{% endblock content %}
+{% endblock table %}
+
+{% block datatablesInitSpecific %}
+    $("#constituencyTable").dataTable({
+        "sPaginationType": "full_numbers",
+        iDisplayLength : 30,
+        bLengthChange : false,
+        "aoColumns": [
+            { "sType": "html" },
+            { "sType": "html" },
+            { "sType": "numeric" },
+            { "sType": "numeric" },
+            { "sType": "percent" },
+            { "sType": "numeric" },
+            { "sType": "percent" },
+            { "sType": "numeric" },
+            { "sType": "percent" }
+        ],
+        bAutoWidth: false
+    });
+{% endblock datatablesInitSpecific %}
