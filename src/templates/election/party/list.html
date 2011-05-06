@@ -1,4 +1,3 @@
-{% if parties %}
 <table id="partyTable" class="dataTable classyTable">
 	<thead>
         <tr>
@@ -24,9 +23,16 @@
                 <td>{{ party.seats_2010_pr }}</td>
                 <td>{{ party.seats_2010_ger }}</td>
             </tr>
+        {% empty %}
+            <p>No parties are available.</p>
         {% endfor %}
     </tbody>
 </table>
-{% else %}
-    <p>No parties are available.</p>
-{% endif %}
+<br />
+<p>
+    PR Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Proportional_representation">Proportional Representation</a> system'
+<br />
+    German Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Elections_in_Germany#Election_system">system like in Germany</a>
+<br />
+    *both are rough guesstimates and may be wildly off
+</p>

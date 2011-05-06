@@ -1,4 +1,3 @@
-{% if candidates %}
 <table id="candidateTable" class="dataTable classyTable">
 	<thead>
         <tr>
@@ -18,9 +17,8 @@
             <td>{{ candidate.votes_2010 }}</td>
             <td>{{ candidate.vote_percentage_2010|floatformat:2 }}%</td>
         </tr>
+    {% empty %}
+        <p>No candidates are available.</p>
     {% endfor %}
     </tbody>
 </table>
-{% else %}
-    <p>No candidates are available.</p>
-{% endif %}
