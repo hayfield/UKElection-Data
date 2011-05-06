@@ -13,7 +13,6 @@ class Party(models.Model):
     
     # the percentage of votes fought which were won
     def vote_percentage_2010(self):
-        percentage = 0.0
         if self.votes_fought_2010 == 0:
             percentage = 0
         else:
@@ -89,6 +88,10 @@ class Candidate_2010(models.Model):
     party = models.ForeignKey(Party)
     votes_2010 = models.IntegerField()
     constituency_2010 = models.ForeignKey(Constituency_2010)
+    
+    # the percentage of votes within their constituency that the candidate obtained
+    def vote_percentage_2010(self):
+        return (float(self.votes_2010) / self.constituency_2010.votes_2010) * 100
     
     def __unicode__(self):
         return self.name

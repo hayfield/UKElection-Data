@@ -1,9 +1,26 @@
 {% if candidates %}
-    <ul>
+<table id="candidateTable" class="dataTable classyTable">
+	<thead>
+        <tr>
+            <th class="sorting">Candidate</th>
+            <th class="sorting">Party</th>
+            <th class="sorting">Constituency</th>
+            <th class="sorting">Votes</th>
+            <th class="sorting">Vote %</th>
+        </tr>
+    </thead>
+    <tbody>
     {% for candidate in candidates %}
-        <li>{{ candidate.name }}</li>
+        <tr>
+            <td>{{ candidate.name }}</td>
+            <td><a href="/party/{{ candidate.party.id }}">{{ candidate.party.name }}</a></td>
+            <td><a href="/constituency/{{ candidate.constituency_2010.id }}">{{ candidate.constituency_2010.name }}</a></td>
+            <td>{{ candidate.votes_2010 }}</td>
+            <td>{{ candidate.vote_percentage_2010|floatformat:2 }}%</td>
+        </tr>
     {% endfor %}
-    </ul>
+    </tbody>
+</table>
 {% else %}
     <p>No candidates are available.</p>
 {% endif %}
