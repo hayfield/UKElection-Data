@@ -4,28 +4,39 @@ from UKElectionData.election.models import Party, Constituency_2010, Candidate_2
 
 urlpatterns = patterns('election.views',
     # party information
-    #(r'^party/$', 'partyIndex'),
+    # full party listing
     (r'^party/$',
         ListView.as_view(
             queryset = Party.objects.order_by('name'),
             context_object_name = 'parties',
             template_name = 'election/party/index.html')),
-    (r'^party/(?P<party_id>\d+)/$', 'partyDetail'),
+                    
+    # specific party info   
+    (r'^party/(?P<pk>\d+)/$',
+        DetailView.as_view(
+            model = Party,
+            template_name = 'election/party/party.html')),
     
     # constituency information
-    # (r'^constituency/$', 'constituencyIndex'),
+    # full constituency listing
     (r'^constituency/$',
         ListView.as_view(
             queryset = Constituency_2010.objects.order_by('name'),
             context_object_name = 'constituencies',
             template_name = 'election/constituency/index.html')),
-    (r'^constituency/(?P<constituency_id>\d+)/$', 'constituencyDetail'),
+    
+    # specific constituency info
+    (r'^constituency/(?P<pk>\d+)/$',
+        DetailView.as_view(
+            model = Constituency_2010,
+            context_object_name = 'constituency',
+            template_name = 'election/constituency/constituency.html')),
     
     # candidate 2010 information
+    # full candidate listing
     (r'^candidate/$',
         ListView.as_view(
             queryset = Candidate_2010.objects.order_by('name'),
             context_object_name = 'candidates',
             template_name = 'election/candidate/index.html')),
-    # (r'^candidate/$', 'candidate2010Index'),
 )
