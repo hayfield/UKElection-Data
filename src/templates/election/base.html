@@ -8,6 +8,14 @@
     <title>{% block title %}UK Election Data{% endblock %}</title> 
 </head> 
 <body>
+    <div id="navigation">
+        {% block navigation %}
+            <a href="{% url party-list %}">Party Listing</a> | 
+            <a href="{% url candidate-2010-list %}">Candidate Listing</a> | 
+            <a href="{% url constituency-2010-list %}">Contituency Listing</a>
+        {% endblock %}
+    </div>
+    
     <h2>{% block heading %}UK Election Data{% endblock %}</h2>
     <div id="content">
         {% block content %}{% endblock %}
