@@ -4,7 +4,7 @@
 
 {% block table %}
 
-<table id="partyTable" class="dataTable classyTable">
+<table id="partyListTable" class="dataTable classyTable">
     <thead>
         <tr>
             <th class="sorting">Party</th>
@@ -46,7 +46,7 @@ German Seats: - the number of seats under a <a href="http://en.wikipedia.org/wik
 {% endblock %}
 
 {% block datatablesInitSpecific %}
-    $("#partyTable").dataTable({
+    $("#partyListTable").dataTable({
         "sPaginationType": "full_numbers",
         iDisplayLength : 30,
         bLengthChange : false,

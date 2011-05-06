@@ -4,7 +4,7 @@
 
 {% block table %}
 
-<table id="constituencyTable" class="dataTable classyTable">
+<table id="constituencyListTable" class="dataTable classyTable">
     <thead>
         <tr>
             <th class="sorting">Constituency</th>
@@ -40,7 +40,7 @@
 {% endblock table %}
 
 {% block datatablesInitSpecific %}
-    $("#constituencyTable").dataTable({
+    $("#constituencyListTable").dataTable({
         "sPaginationType": "full_numbers",
         iDisplayLength : 30,
         bLengthChange : false,
