@@ -1,3 +1,9 @@
+{% extends "election/base.html" %}
+
+{% block heading %}Constituency Listing{% endblock %}
+
+{% block content %}
+
 <table id="constituencyTable" class="dataTable classyTable">
 	<thead>
         <tr>
@@ -30,3 +36,5 @@
     {% endfor %}
     </tbody>
 </table>
+
+{% endblock content %}

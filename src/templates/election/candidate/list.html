@@ -1,3 +1,9 @@
+{% extends "election/base.html" %}
+
+{% block heading %}Candidate Listing{% endblock %}
+
+{% block content %}
+
 <table id="candidateTable" class="dataTable classyTable">
 	<thead>
         <tr>
@@ -22,3 +28,5 @@
     {% endfor %}
     </tbody>
 </table>
+
+{% endblock content %}

@@ -1,0 +1,145 @@
+body {
+    font-family: Verdana, Tahoma, Arial, Times, Serif;
+    font-size: 12px;
+    padding: 20px;
+    margin: 0;
+    border: 0;
+    width: 100%;
+	background:url('page_bg.jpg');
+}
+
+table {
+    border: 0;
+    margin: 4px auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+	font-size: 12px;
+}
+
+table.classyTable {
+    background: #E0BA8B;
+    border: .2em solid #7F5F27;
+    margin: .4em auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    clear: both;
+    width: 90%;
+}
+
+table.classyTable th,
+table.classyTable td {
+    border: 1px solid #381F04;
+    text-align: center;
+    
+}
+
+table th.left,
+table td.left,
+table td ul {
+    text-align: left;
+}
+
+table.classyTable th.header {
+    background: #CE9C70 url(../images/tblhead_bg.png);
+}
+
+table.classyTable thead {
+    background: #BD976A;
+	cursor: pointer;
+}
+
+table.classyTable tfoot {
+    background: #BD976A;
+}
+
+table.classyTable tfoot td.footMajorityTitle {
+	text-align: right;
+	padding-right: 5px;
+	font-weight: bold;
+}
+
+.tableWrap {
+    width: 100%;
+    overflow: auto;
+}
+
+tr.odd {
+    background: #C59F70;
+}
+
+tr.even {
+    background: #BE9868;
+}
+
+th.sorting_asc {
+    background: #AC875A url('sort_asc.gif') no-repeat center right;
+}
+
+th.sorting_desc {
+    background: #AC875A url('sort_desc.gif') no-repeat center right;
+}
+
+th.sorting,
+th.sorting_asc_disabled,
+th.sorting_desc_disabled {
+    background: #BD976A url('sort_both.gif') no-repeat center right;
+}
+
+.paginate_enabled_previous,
+.paginate_enabled_next {
+	cursor: pointer;
+}
+
+.paging_full_numbers {
+    width: auto;
+    height: 22px;
+    line-height: 22px;
+    margin: 0;
+	float: right;
+	padding-right: 40px;
+}
+
+.top, .bottom {
+    padding: 15px;
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+}
+
+.dataTables_info {
+    float: left;
+}
+
+.dataTables_empty {
+    text-align: center;
+}
+
+span.paginate_button,
+span.paginate_active {
+    border: 1px solid #8F622C;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 2px 5px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+span.paginate_button {
+    background: #D7AE85;
+}
+
+span.paginate_button:hover {
+    background: #DFBC8C;
+}
+
+span.paginate_active {
+    background: #DFBC8C;
+    cursor: default;
+}
+
+table.classyTable a {
+	color: #111;
+	text-decoration: none;
+	border-bottom: 1px dashed #444;
+	margin: 5px;
+}
