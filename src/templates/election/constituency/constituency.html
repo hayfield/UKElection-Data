@@ -17,7 +17,7 @@
     {% for candidate in constituency.candidate_2010_set.all %}
         <tr>
             <td>{{ candidate.name }}</td>
-            <td><a href="/party/{{ candidate.party.id }}">{{ candidate.party.name }}</a></td>
+            <td><a href="{% url party-detail candidate.party.id %}">{{ candidate.party.name }}</a></td>
             <td>{{ candidate.votes_2010 }}</td>
             <td>{{ candidate.vote_percentage_2010|floatformat:2 }}%</td>
         </tr>
