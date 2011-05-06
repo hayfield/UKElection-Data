@@ -16,6 +16,13 @@ urlpatterns = patterns('',
     (r'^party/$', 'election.views.partyIndex'),
     (r'^party/(?P<party_id>\d+)/$', 'election.views.partyDetail'),
     
+    # constituency information
+    (r'^constituency/$', 'election.views.constituencyIndex'),
+    (r'^constituency/(?P<constituency_id>\d+)/$', 'election.views.constituencyDetail'),
+    
+    # candidate 2010 information
+    (r'^candidate/$', 'election.views.candidate2010Index'),
+    
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

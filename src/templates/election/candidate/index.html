@@ -1,0 +1,9 @@
+{% if candidates %}
+    <ul>
+    {% for candidate in candidates %}
+        <li>{{ candidate.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No candidates are available.</p>
+{% endif %}

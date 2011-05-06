@@ -1,0 +1,9 @@
+{% if constituencies %}
+    <ul>
+    {% for constituency in constituencies %}
+        <li><a href="/constituency/{{ constituency.id }}/">{{ constituency.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No constituencies are available.</p>
+{% endif %}
