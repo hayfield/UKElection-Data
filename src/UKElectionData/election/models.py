@@ -1,4 +1,5 @@
 from django.db import models
+import math
 
 # Create your models here.
 # a party
@@ -10,6 +11,42 @@ class Party(models.Model):
     candidates_2010 = models.IntegerField()
     seats_2010 = models.IntegerField()
     
+    # the percentage of votes fought which were won
+    def vote_percentage_2010(self):
+        percentage = 0.0
+        if self.votes_fought_2010 == 0:
+            percentage = 0
+        else:
+            percentage = (float(self.votes_2010) / self.votes_fought_2010) * 100
+        return percentage
+    
+    # both of the following are rough guesstimates and may be wildly off 
+    # the number of seats under a Proportional Representation system
+    def seats_2010_pr(self):
+        vote_percentage = self.vote_percentage_2010()
+        if self.candidates_2010 < 9:
+            seats = 0
+        elif self.candidates_2010 < 600:
+            if vote_percentage > 1:
+                seats = 6
+            else:
+                seats = math.floor(6.13 * vote_percentage)
+            if self.name.find('Union') != -1 or self.name.find('Labour') != -1:
+                if seats >= 6:
+                    seats = 2
+        else:
+            seats = math.floor(6.13 * vote_percentage)
+        return int(seats)
+        
+    # the number of seats under a system like in Germany
+    def seats_2010_ger(self):
+        seats = 0.5 * float(self.seats_2010)
+        if self.vote_percentage_2010() > 1:
+            seats += 0.5 * self.seats_2010_pr()
+        seats *= 1.03
+        return int(math.floor(seats))
+            
+    # a string representation of the class
     def __unicode__(self):
         return self.name
     

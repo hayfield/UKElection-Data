@@ -1,9 +1,32 @@
 {% if parties %}
-    <ul>
-    {% for party in parties %}
-        <li><a href="/party/{{ party.id }}/">{{ party.name }}</a></li>
-    {% endfor %}
-    </ul>
+<table id="partyTable" class="dataTable classyTable">
+	<thead>
+        <tr>
+            <th class="sorting">Party</th>
+            <th class="sorting">Candidates</th>
+            <th class="sorting">Votes</th>
+            <th class="sorting">Votes Fought</th>
+            <th class="sorting">Vote Percentage</th>
+            <th class="sorting">Seats</th>
+            <th class="sorting">Seats PR</th>
+            <th class="sorting">Seats Ger</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for party in parties %}
+            <tr>
+                <td><a href="/party/{{ party.id }}/">{{ party.name }}</a></td>
+                <td>{{ party.candidate_2010_set.count }}</td>
+                <td>{{ party.votes_2010 }}</td>
+                <td>{{ party.votes_fought_2010 }}</td>
+                <td>{{ party.vote_percentage_2010|floatformat:2 }}%</td>
+                <td>{{ party.seats_2010 }}</td>
+                <td>{{ party.seats_2010_pr }}</td>
+                <td>{{ party.seats_2010_ger }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% else %}
     <p>No parties are available.</p>
 {% endif %}
