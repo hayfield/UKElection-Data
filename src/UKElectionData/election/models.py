@@ -63,6 +63,22 @@ class Constituency_2010(models.Model):
     winning_party_2010 = models.ForeignKey(Party)
     majority_2010 = models.IntegerField()
     
+    # the number of votes the winning candidate obtained
+    def winning_votes_2010(self):
+        return self.candidate_2010_set.get(party=self.winning_party_2010).votes_2010
+    
+    # the percentage of the votes the winning candidate obtained
+    def winning_percentage_2010(self):
+        return (float(self.winning_votes_2010()) / self.votes_2010) * 100
+    
+    # the percentage turnout within the constituency
+    def turnout_2010(self):
+        return (float(self.votes_2010) / self.possible_voters_2010) * 100
+    
+    # the percentage of votes the winning candidate got above the second candidate
+    def majority_percentage_2010(self):
+        return (float(self.majority_2010) / self.votes_2010) * 100
+    
     def __unicode__(self):
         return self.name
     

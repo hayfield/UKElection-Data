@@ -1,9 +1,34 @@
 {% if constituencies %}
-    <ul>
+<table id="constituencyTable" class="dataTable classyTable">
+	<thead>
+        <tr>
+            <th class="sorting">Constituency</th>
+            <th class="sorting">Winning Party</th>
+            <th class="sorting">Total Votes</th>
+            <th class="sorting">Winning Votes</th>
+            <th class="sorting">Winning %</th>
+            <th class="sorting">Possible Votes</th>
+            <th class="sorting">Turnout</th>
+            <th class="sorting">Majority</th>
+            <th class="sorting">Majority %</th>
+        </tr>
+    </thead>
+    <tbody>
     {% for constituency in constituencies %}
-        <li><a href="/constituency/{{ constituency.id }}/">{{ constituency.name }}</a></li>
+        <tr>
+            <td><a href="/constituency/{{ constituency.id }}/">{{ constituency.name }}</a></td>
+            <td><a href="/party/{{ constituency.winning_party_2010.id }}">{{ constituency.winning_party_2010.name }}</td>
+            <td>{{ constituency.votes_2010 }}</td>
+            <td>{{ constituency.winning_votes_2010 }}</td>
+            <td>{{ constituency.winning_percentage_2010|floatformat:2 }}%</td>
+            <td>{{ constituency.possible_voters_2010 }}</td>
+            <td>{{ constituency.turnout_2010|floatformat:2 }}%</td>
+            <td>{{ constituency.majority_2010 }}</td>
+            <td>{{ constituency.majority_percentage_2010|floatformat:2 }}%</td>
+        </tr>
     {% endfor %}
-    </ul>
+    </tbody>
+</table>
 {% else %}
     <p>No constituencies are available.</p>
 {% endif %}
