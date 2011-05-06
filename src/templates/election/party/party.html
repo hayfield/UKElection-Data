@@ -1,6 +1,45 @@
-<h1>{{ party.name }}</h1>
-<ul>
-{% for candidate in party.candidate_2010_set.all %}
-    <li>{{ candidate.name }}</li>
-{% endfor %}
-</ul>
+{% extends "election/base_list.html" %}
+
+{% block heading %}Party - {{ party.name }}{% endblock %}
+
+{% block table %}
+
+<table id="partyTable" class="dataTable classyTable">
+    <thead>
+        <tr>
+            <th class="sorting">Candidate</th>
+            <th class="sorting">Constituency</th>
+            <th class="sorting">Votes</th>
+            <th class="sorting">Vote %</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for candidate in party.candidate_2010_set.all %}
+        <tr>
+            <td>{{ candidate.name }}</td>
+            <td><a href="/constituency/{{ candidate.constituency_2010.id }}">{{ candidate.constituency_2010.name }}</a></td>
+            <td>{{ candidate.votes_2010 }}</td>
+            <td>{{ candidate.vote_percentage_2010|floatformat:2 }}%</td>
+        </tr>
+    {% empty %}
+        <p>No candidates are available.</p>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock table %}
+
+{% block datatablesInitSpecific %}
+    $("#partyTable").dataTable({
+        "sPaginationType": "full_numbers",
+        iDisplayLength : 30,
+        bLengthChange : false,
+        "aoColumns": [
+            { "sType": "string" },
+            { "sType": "html" },
+            { "sType": "numeric" },
+            { "sType": "percent" }
+        ],
+        bAutoWidth: false
+    });
+{% endblock datatablesInitSpecific %}

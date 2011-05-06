@@ -34,16 +34,16 @@
         {% endfor %}
     </tbody>
 </table>
-<br />
-<p>
-    PR Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Proportional_representation">Proportional Representation</a> system'
-<br />
-    German Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Elections_in_Germany#Election_system">system like in Germany</a>
-<br />
-    *both are rough guesstimates and may be wildly off
-</p>
 
 {% endblock table %}
+
+{% block tableinfo %}
+PR Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Proportional_representation">Proportional Representation</a> system'
+<br />
+German Seats: - the number of seats under a <a href="http://en.wikipedia.org/wiki/Elections_in_Germany#Election_system">system like in Germany</a>
+<br />
+*both are rough guesstimates and may be wildly off
+{% endblock %}
 
 {% block datatablesInitSpecific %}
     $("#partyTable").dataTable({
