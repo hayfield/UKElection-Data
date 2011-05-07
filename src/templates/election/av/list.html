@@ -1,0 +1,62 @@
+{% extends "election/base_list.html" %}
+
+{% block heading %}Constituency Listing for the AV Referendum{% endblock %}
+
+{% block table %}
+
+<table id="avListTable" class="dataTable classyTable">
+    <thead>
+        <tr>
+            <th class="sorting">Constituency</th>
+            <th class="sorting">Result</th>
+            <th class="sorting">Yes</th>
+            <th class="sorting">Yes %</th>
+            <th class="sorting">No</th>
+            <th class="sorting">No %</th>   
+            <th class="sorting">Possible Votes</th>
+            <th class="sorting">Turnout</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for constituency in constituencies %}
+            <tr>
+                <td>{{ constituency.name }}</td>
+                <td>{{ constituency.outcome }}</td>
+                <td>{{ constituency.yes }}</td>
+                <td>{{ constituency.yes_percentage|floatformat:2 }}%</td>
+                <td>{{ constituency.no }}</td>
+                <td>{{ constituency.no_percentage|floatformat:2 }}%</td>
+                <td>{{ constituency.possible_voters }}</td>
+                <td>{{ constituency.turnout|floatformat:2 }}%</td>
+            </tr>
+        {% empty %}
+            <p>No constituencies are available.</p>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock table %}
+
+{% block tableinfo %}
+The results can be seen on a map on the <a href="http://www.guardian.co.uk/news/datablog/2011/may/06/av-referendum-results-map">Guardian Datablog</a>. 
+The data for this visualisation is <a href="http://www.google.com/fusiontables/DataSource?dsrcid=804647">available on Google Fusion Tables</a>.
+{% endblock %}
+
+{% block datatablesInitSpecific %}
+    $("#avListTable").dataTable({
+        "sPaginationType": "full_numbers",
+        iDisplayLength : 30,
+        bLengthChange : false,
+        "aoColumns": [
+            { "sType": "string" },
+            { "sType": "string" },
+            { "sType": "numeric" },
+            { "sType": "percent" },
+            { "sType": "numeric" },
+            { "sType": "percent" },
+            { "sType": "numeric" },
+            { "sType": "percent" }
+        ],
+        "aaSorting": [[3, "desc"]]
+    });
+{% endblock datatablesInitSpecific %}

@@ -14,3 +14,4 @@ parts
 *~
 *local_settings.py
 *.json
+*svg2storage.py

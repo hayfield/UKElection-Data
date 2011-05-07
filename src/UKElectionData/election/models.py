@@ -99,4 +99,25 @@ class Candidate_2010(models.Model):
     
     def __unicode__(self):
         return self.name
-
+    
+# a constituency for the 2011 AV referendum
+class Constituency_AV(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255)
+    yes = models.IntegerField()
+    no = models.IntegerField()
+    outcome = models.CharField(max_length=7)
+    possible_voters = models.IntegerField()
+    votes = models.IntegerField()
+    turnout = models.DecimalField(max_digits=5, decimal_places=2)
+    
+    # the percentage of voters who voted yes
+    def yes_percentage(self):
+        return (float(self.yes) / self.votes) * 100
+    
+    # the percentage of voters who voted no
+    def no_percentage(self):
+        return (float(self.no) / self.votes) * 100
+    
+    def __unicode__(self):
+        return self.name

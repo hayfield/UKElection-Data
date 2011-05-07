@@ -3,7 +3,7 @@
 from UKElectionData.election.models import Constituency_2010
 import csv
 
-with open('2010-Data/constituencies-description.csv', 'rb') as f:
+with open('Data/constituencies-description.csv', 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
         # try matching the name exactly, replacing brackets with square ones

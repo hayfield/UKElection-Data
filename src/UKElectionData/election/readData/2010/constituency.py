@@ -3,7 +3,7 @@
 from UKElectionData.election.models import Constituency_2010, Party
 import csv
 
-with open('2010-Data/uk_elections-constituency.csv', 'rb') as f:
+with open('Data/uk_elections-constituency.csv', 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
         constituency = Constituency_2010(id = row[0],

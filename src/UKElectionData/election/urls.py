@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 from django.views.generic import DetailView, ListView
-from UKElectionData.election.models import Party, Constituency_2010, Candidate_2010
+from UKElectionData.election.models import Party, Constituency_2010, Candidate_2010, Constituency_AV
 
 urlpatterns = patterns('',
     # party information
@@ -44,4 +44,12 @@ urlpatterns = patterns('',
             context_object_name = 'candidates',
             template_name = 'election/candidate/list.html'),
         name = 'candidate-2010-list'),
+                       
+    # av referendum 2011 listing
+    url(r'^av/$',
+        ListView.as_view(
+            queryset = Constituency_AV.objects.order_by('name'),
+            context_object_name = 'constituencies',
+            template_name = 'election/av/list.html'),
+        name = 'av-referendum-list'),
 )
