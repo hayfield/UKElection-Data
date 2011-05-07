@@ -13,5 +13,5 @@ with open('2010-Data/uk_elections-party.csv', 'rb') as f:
                   candidates_2010 = row[4],
                   seats_2010 = row[5])
         print party
+        
         # party.save()
-

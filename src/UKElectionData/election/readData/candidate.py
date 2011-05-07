@@ -12,4 +12,5 @@ with open('2010-Data/uk_elections-candidate.csv', 'rb') as f:
                             votes_2010 = row[3],
                             constituency_2010 = Constituency_2010.objects.get(pk=row[4]))
         print candidate
+        
         # candidate.save()

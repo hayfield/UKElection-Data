@@ -17,5 +17,5 @@ with open('2010-Data/uk_elections-constituency.csv', 'rb') as f:
                             winning_party_2010 = Party.objects.get(pk=row[8]),
                             majority_2010 = row[9])
         print constituency
+        
         # constituency.save()
-

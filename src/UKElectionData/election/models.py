@@ -61,6 +61,10 @@ class Constituency_2010(models.Model):
     votes_2010 = models.IntegerField()
     winning_party_2010 = models.ForeignKey(Party)
     majority_2010 = models.IntegerField()
+    description_2010 = models.TextField()
+    mp_info_2010 = models.TextField()
+    times_cid = models.IntegerField(null=True)
+    times_mid = models.IntegerField(null=True)
     
     # the number of votes the winning candidate obtained
     def winning_votes_2010(self):
